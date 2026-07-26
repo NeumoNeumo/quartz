@@ -123,8 +123,8 @@ dunstify "Music Recorded"
 ```
 ### rclone
 ```text
-rclone mount --daemon sustech_cse: ~/sustech_cse/
-fusermount -u ~/sustech_cse
+rclone mount --daemon L40: ~/L40/
+fusermount -u ~/L40
 ```
 ### terminal
 ```text
@@ -239,7 +239,7 @@ yaml_metadata:
 ```yaml
 ---
 title: "My Title"
-author: "Jianhui Yuan Xu"
+author: "Neumo"
 date: \today{}
 geometry: "top=2cm, bottom=1.5cm, left=2cm, right=2cm, a4paper"
 colorlinks: true

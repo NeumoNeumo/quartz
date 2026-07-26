@@ -27,9 +27,12 @@ $\mathbf{H}$ 是输入数据 $X$ 经过前面几十层非线性变换得到的�
 
 如果你想考虑二阶项，直接算Hessian有点贵，可以利用加噪/随机mask，例如dropout与magma，详细推导可见[这则评论](https://kexue.fm/archives/11654/comment-page-1#comment-29312)。或者也可以像SAM(Sharpness-Aware Minimization)[^3]，先沿着梯度方向走一步，然后用终点处的梯度更新矩阵，这样也包含了Hessian的信息。不要相信这两篇文章所声称的直觉和推导，他们说得都有问题。
 
+如果你想证明某个优化器得到的结果是最优的，可以考虑使用一个certificate。这个certificate可以来自KKT条件、Max–min inequality、次梯度条件、法锥条件等。一个有用的intuition：约束优化中，对偶变量/Lagrange乘子通常用于累积约束违反所产生的压力 [^5]
+
 ## Ref
 
 [^1]: [Optimizer choice matters for the emergence of Neural Collapse](https://arxiv.org/abs/2602.16642)
 [^2]: [What Happens During the Loss Plateau? Understanding Abrupt Learning in Transformers](https://arxiv.org/abs/2506.13688)
 [^3]: [Sharpness-Aware Minimization for Efficiently Improving Generalization](https://arxiv.org/abs/2010.01412)
 [^4]: [Implicit Regularization in Matrix Factorization](https://arxiv.org/abs/1705.09280)
+[^5]: [Implicit Regularization in Matrix Factorization](https://arxiv.org/abs/1705.09280)
