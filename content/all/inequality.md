@@ -35,6 +35,4 @@ Equality condition is related to [Prouhet-Tarry-Escott problem](https://en.wikip
 
 ---
 
-
-
 [^1]: A general theorem is: Let $f$ be a holomorphic function on a domain $D$, $f \not\equiv 0$. Then $\log|f|$ and $|f|^p$ ($0 < p < \infty$) are both subharmonic functions on $D$.

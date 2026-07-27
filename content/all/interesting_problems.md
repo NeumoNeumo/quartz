@@ -50,3 +50,9 @@ $$X = \bigcup_{i=1}^\infty (X \cap \partial D_i)$$
 下面的讨论均在整系数多项式中。任意$f(x)$是否必定存在$g(x)$使得$f(g(x))$不为既约多项式
 > [!info]- Answer
 $f(x) | f(f(x)+x)$
+
+## Famous Puzzles
+
+- https://en.wikipedia.org/wiki/Four_glasses_puzzle
+- https://www.reddit.com/r/puzzles/comments/st0b70/find_the_fake_among_12_balls_in_3_weighs_all_12/
+- https://en.wikipedia.org/wiki/Knights_and_Knaves : 面前有两个人，一个天使一个恶魔，恶魔总说假话，天使总说真话，前面有两扇门，一扇天堂一扇地狱。你能向面前两个人中的一个问一个问题，但你不知道你问的那个人是天使还是恶魔。怎么识别出哪扇门是天堂？
