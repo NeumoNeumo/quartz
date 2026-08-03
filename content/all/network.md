@@ -1,5 +1,6 @@
 ---
 id: network
+title: network
 aliases: []
 tags:
   - linux
@@ -17,6 +18,14 @@ tags:
 - ip rule/route只进行路由，而无法进行更高级的流量管理，于是有了iptables。之后又有了其它工具：IPv4 用 iptables，IPv6 用 ip6tables，ARP 协议用 arptables，网桥用 ebtables，各自为政，相对混乱，而nftables则用一套语法统一所有，并解决了 iptables规则逐个线性匹配的性能瓶颈。现在原生iptables已经被废弃，实际上用的是 iptables-nft wrapper。
 - linux上单张物理网卡上能够配置多个虚拟子网卡，例如macvlan。macvlan挂载在物理网卡的rx_handler上，位于Ingress处，所以你可以用tcpdump抓到macvlan处理前的包。如果`tcpdump -i macvlan0`则可以看到这个匹配这个子网卡的mac的包。
 - linux上从某个网卡发包不意味着这个包的sip一定是这个网卡所绑定的ip。
+
+### USB NIC
+
+There are at least two components in a USB NIC:
+- PHY (Physical Layer) converts digital bits into electrical or optical signals.
+- MAC (Media Access Control) process some low-level tasks like adding CRC error-checking field, filtering frames based on MAC address, supporting WoL, e.t.c.
+
+They are connected by MII/RMII.
 
 ### TUN vs TPROXY
 
