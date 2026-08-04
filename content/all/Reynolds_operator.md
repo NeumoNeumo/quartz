@@ -1,5 +1,6 @@
 ---
 id: Reynolds_operator
+title: Reynolds_operator
 aliases: []
 tags: []
 ---
@@ -8,7 +9,7 @@ tags: []
 $$
 R(v)=\frac{1}{|G|}\sum_{g\in G} g\cdot v.
 $$
-这个$R$就是Reynolds operator.
+这个$R$就是Reynolds operator，“$R$是个投影算符”这个性质叫Maschke's theorem。
 
 既然$R$是一个投影算符，那么根据“投影的迹为像空间维数”，可知G-不变子空间维数为$\dim V^G = \frac{1}{|G|}\sum_{g\in G}\chi(g)$.
 

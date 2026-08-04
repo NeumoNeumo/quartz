@@ -1,5 +1,6 @@
 ---
 id: neural_networks
+title: Neural Network
 aliases:
   - Neural Network
 tags:
@@ -36,7 +37,7 @@ https://chatgpt.com/c/69ee36aa-dcb0-83e8-ab36-250cbf5722f3 文章声称$\lambda_
 - [ ] weight decay对low rank应该有促进作用，有没有理论框架对其进行分析？例如tensor program框架下如何看待low rank与weight decay？在没有wd的时候，模型会表现出low rank吗？
 经过海量预训练后，权重 $W_0$ 会停留在损失地形的一个**高维平坦流形（而非严格极小值点）**附近。此时的 Hessian 矩阵呈现明显的低秩结构：由于数据的核心特征，存在极少数极大的特征值（极度敏感方向）；同时由于模型的过参数化、架构对称性以及 Softmax 的饱和效应，存在海量接近于零甚至为零的特征值（极度平坦方向）；此外，还夹杂着少量负特征值（意味着其实是鞍点区域）。这可以解释[The Universal Weight Subspace Hypothesis](https://arxiv.org/abs/2512.05117)为什么不同的任务学到的LoRA的主成分很大程度上是重叠的。从NTK的角度说(如果lora调整不是很大)，模型的动力学是由NTK中的最大的那几个特征值主导的，因此低秩不足为奇(推导可见[此](https://gemini.google.com/share/a2ed81daecbc))。
 
-如果我们给模型加上稀疏性要求，它就可以学到局部特征
+如果直接对图像做PCA，通常得到低频的傅立叶基。但如果我们给模型加上稀疏性要求，它就可以学到局部特征。这是因为在傅立叶基下，局部的信号需要用一大堆全局傅立叶基来拟合，但如果使用诸如Gabor filter的局部特征，则更快捷。[]
 
 随着模型变大，hidden state协方差的spectrum的entropy线性增长而其Participation Ratio增长更缓慢[^25]。不要把 FFN 宽度当作“越大越好”的单调旋钮，而应把它看作 尾部容量与核心主导模式容量之间的权衡
 
@@ -131,3 +132,4 @@ https://chatgpt.com/c/69eb72ca-afbc-83e8-9c99-0cc82a6459c8
 [^31]: [Training Language Models via Neural Cellular Automata](https://arxiv.org/abs/2603.10055)
 [^32]: [Reinforcement learning towards broadly and persistently beneficial models](https://alignment.openai.com/beneficial-rl)
 [^33]: [When does RandOpt work?](https://kindxiaoming.github.io/blog/2026/randopt/)
+[^34]: [Emergence of simple-cell receptive field properties by learning a sparse code for natural images](https://www.nature.com/articles/381607a0)
