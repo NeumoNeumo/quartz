@@ -75,5 +75,11 @@ btw, 常见虚拟化管理平台有Proxmox Virtual Environment(PVE)与VMWare ESX
   不过可以创建一个新的macvlan网卡并配置相应路由，让host向容器网段的数据包通过这
   个macvlan进行传输，而macvlan驱动内部是可以互通的。
 
+#### VirtIO, virtqueue, vhost
+
+VirtIO是一种为虚拟机设计的半虚拟化I/O设备标准，它规定了guest中的virtio-net驱动应该怎样处理它接受到的网络请求并通知host上的backend（例如userspace的qemu，又或者是内核实现的更高性能的vhost），以及backend应当如何处理来自virtio-net驱动的请求。virtqueue是guest 与 device/backend 之间共享的队列。
+
+VirtIO device可以通过不同的方式呈现给host，这叫VirtIO transport，于是有virtio-pci（x86常见）, virtio-mmio（arm常见）, virtio-ccw等。
+
 ## Reference
 https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks
