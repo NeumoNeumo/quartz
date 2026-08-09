@@ -1,8 +1,9 @@
 ---
+id: rock
+title: rock
+aliases: []
 tags:
   - geography
-aliases: []
-id: rock
 ---
 
 岩石的酸性基性是指岩石中二氧化硅（SiO₂）含量的相对高低程度
@@ -97,6 +98,11 @@ id: rock
 ![](../00-Attachments/20260417212225.png)
 ![](../00-Attachments/20260417212205.png)
 
+竹叶状灰岩，摄于拙政园
+![](../00-Attachments/20260809101449.png)
+
+角砾状石灰岩，摄于拙政园
+![](../00-Attachments/20260809103642.png)
 
 ### Unknown
 
