@@ -20,7 +20,7 @@ tags:
 
 ## Useful commands
 
-*Old school*:
+*Old-school*:
 - Display all sound cards: `cat /proc/asound/cards`
 - Display all PCM devices: `cat /proc/asound/pcm`
 - Display supported inputs of a sound card: `cat /proc/asound/card1/stream0`
