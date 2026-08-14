@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>多重分形：危机演化模拟器</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 30px; 
+            background-color: #f8f9fa;
+        }
+        h2 { color: #2c3e50; text-align: center; }
+        .control-panel { 
+            background: #ffffff; 
+            padding: 25px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 25px; 
+            border-left: 5px solid #3498db;
+        }
+        input[type=range] { 
+            width: 100%; 
+            margin: 15px 0; 
+            cursor: pointer;
+        }
+        .k-value { 
+            font-size: 1.5em; 
+            font-weight: bold; 
+            color: #e74c3c; 
+        }
+        .chart-container {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>多重分形谱动态演化模型</h2>
+    
+    <div class="control-panel">
+        <label style="font-size: 1.1em;">
+            <strong>系统危机指数 K (0 = 平静, 1 = 极端湍流): </strong> 
+            <span id="kValue" class="k-value">0.10</span>
+        </label>
+        <input type="range" id="kSlider" min="0" max="1" step="0.01" value="0.1">
+        <p style="font-size: 0.95em; color: #7f8c8d; margin-top: 5px;">
+            💡 <strong>操作指南：</strong>向右拖动滑块。观察上方时间序列如何从“平稳游走”突变为“极端震荡”；同时观察下方的 $f(\alpha)$ 谱如何发生标志性的<strong>向左平移（整体粗糙度增加）</strong>和<strong>宽度拉伸（局部间歇性增强）</strong>。
+        </p>
+    </div>
+
+    <div class="chart-container">
+        <div id="timeSeriesPlot"></div>
+    </div>
+    
+    <div class="chart-container">
+        <div id="fAlphaPlot"></div>
+    </div>
+
+    <script>
+        // --- 1. 核心数学与数据准备 ---
+        const N = 512; 
+        const baseWalk = new Float64Array(N);
+        const baseNoise = new Float64Array(N);
+        const spikeMask = new Float64Array(N);
+
+        // 自定义伪随机数生成器 (保证每次刷新图形一致，且滑动时平滑过渡)
+        let seed = 42;
+        function random() {
+            let x = Math.sin(seed++) * 10000;
+            return x - Math.floor(x);
+        }
+        
+        // 生成标准正态分布 N(0,1)
+        function randomNormal() {
+            let u = 0, v = 0;
+            while(u === 0) u = random();
+            while(v === 0) v = random();
+            return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+        }
+
+        // 预计算基底信号
+        let walkSum = 0;
+        for(let i = 0; i < N; i++) {
+            walkSum += randomNormal();
+            baseWalk[i] = walkSum;                 // 平滑游走基底
+            baseNoise[i] = randomNormal();         // 白噪声基底
+            // 设定随机的“间歇性爆发点”掩码
+            spikeMask[i] = random() < 0.15 ? 12 : 1; 
+        }
+
+        // 获取颜色：绿 -> 橙 -> 红
+        function getColor(K) {
+            if (K < 0.4) return '#2ecc71';
+            if (K < 0.7) return '#f39c12';
+            return '#e74c3c';
+        }
+
+        // --- 2. 图表更新逻辑 ---
+        function updatePlots(K) {
+            // A. 计算时间序列
+            const y_series = new Float64Array(N);
+            for(let i = 0; i < N; i++) {
+                // K 越大，噪声强度越大，且间歇性尖峰越明显
+                const noiseTerm = baseNoise[i] * spikeMask[i] * (0.5 + 1.5 * K);
+                // 混合平滑信号与极端噪声
+                y_series[i] = (1 - K) * baseWalk[i] + K * noiseTerm * 3;
+            }
+
+            // B. 计算理论多重分形谱 f(alpha)
+            const mu = 0.7 - 0.4 * K;        // 均值减小：整体向左平移
+            const sigma = 0.08 + 0.18 * K;   // 方差增大：谱变宽
+            
+            const alphas = [];
+            const fs = [];
+            for(let a = 0; a <= 1.2; a += 0.005) {
+                let f = 1 - Math.pow(a - mu, 2) / (2 * Math.pow(sigma, 2));
+                if(f >= 0) { // 分形维数不能为负
+                    alphas.push(a);
+                    fs.push(f);
+                }
+            }
+
+            // C. 渲染更新
+            const color = getColor(K);
+
+            Plotly.react('timeSeriesPlot', [{
+                y: y_series,
+                type: 'scatter',
+                mode: 'lines',
+                line: { color: color, width: 1.5 }
+            }], {
+                title: { text: '系统宏观状态：时间序列', font: {size: 16} },
+                xaxis: { title: '时间 (t)', showgrid: false },
+                yaxis: { title: '测度波动 (Price/Velocity)', autorange: true, zeroline: false },
+                margin: { t: 50, b: 40, l: 50, r: 20 },
+                height: 300,
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: '#fcfcfc'
+            }, {responsive: true});
+
+            Plotly.react('fAlphaPlot', [{
+                x: alphas,
+                y: fs,
+                type: 'scatter',
+                mode: 'lines',
+                line: { color: color, width: 3 },
+                fill: 'tozeroy',
+                fillcolor: color + '33' // 添加透明度
+            }], {
+                title: { text: '系统微观特征：多重分形谱 f(α)', font: {size: 16} },
+                xaxis: { title: '奇异性指数 α (越左代表越极端的突变)', range: [0, 1.2], tick0: 0, dtick: 0.2 },
+                yaxis: { title: '分形维数 f(α)', range: [0, 1.1] },
+                margin: { t: 50, b: 40, l: 50, r: 20 },
+                height: 350,
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: '#fcfcfc'
+            }, {responsive: true});
+        }
+
+        // --- 3. 绑定滑块事件 ---
+        const slider = document.getElementById('kSlider');
+        const kValueDisplay = document.getElementById('kValue');
+        
+        slider.addEventListener('input', (e) => {
+            const K = parseFloat(e.target.value);
+            kValueDisplay.innerText = K.toFixed(2);
+            kValueDisplay.style.color = getColor(K);
+            updatePlots(K);
+        });
+
+        // 页面加载时进行首次渲染
+        updatePlots(0.1);
+    </script>
+</body>
+</html>
+
