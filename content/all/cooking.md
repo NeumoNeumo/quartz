@@ -1,5 +1,6 @@
 ---
 id: cooking
+title: cooking
 aliases: []
 tags: []
 ---
