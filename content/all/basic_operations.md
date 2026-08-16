@@ -1,5 +1,6 @@
 ---
 id: basic_operations
+title: basic_operations
 aliases: []
 tags:
   - CS
@@ -82,7 +83,8 @@ sudo apt-get -o Acquire::https::proxy="http://localhost:7890" update
 tar -cI 'xz -9 -T0' -f archive.tar.xz dir/
 ffmpeg -hwaccel cuda
 ffmpeg -i "concat:1.mp3|2.mp3|3.mp3|4.mp3" -acodec copy output.mp3 
-ffmpeg -i input.flac -lavfi "showspectrumpic=s=1280x720:mode=combined:fscale=log:color=intensity" spectrum.png
+ffmpeg -i input.flac -lavfi "showspectrumpic=s=1280x720:mode=combined:fscale=log:color=intensity" /tmp/spectrum.png && mvi /tmp/spectrum.png && rm /tmp/spectrum.png
+ffmpeg -i input.flac -af volumedetect -f null -
 curl https://ipinfo.io # Abroad
 curl https://cip.cc/ # Domestic
 curl -6 https://ip.p3terx.com
