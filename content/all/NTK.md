@@ -1,9 +1,10 @@
 ---
+id: NTK
+title: NTK
+aliases: []
 tags:
   - theory
   - ai
-aliases: []
-id: NTK
 ---
 
 ## Facts
@@ -13,7 +14,7 @@ id: NTK
 #todo
 - DNN as a kernel learner https://gemini.google.com/app/edb4a69f259ffd14
 
-- Random Fourier Features(RFF)可以看作NNGP的activation为cos，变动w的distribution一个特例。
+- [[rff|Random Fourier Features]](RFF)可以看作NNGP的activation为cos，变动w的distribution一个特例。
 
 - 有限宽神经网络训练早期的 empirical NTK 会发生快速、任务相关的谱结构调整：标签/目标函数的能量更集中到 top eigenspaces 上[^4]；由于这些 eigenspaces 对应较大的特征值，训练会沿这些方向更快下降 [^5] [^6]。
 
