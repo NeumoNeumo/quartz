@@ -342,7 +342,8 @@ auth       required   pam_shells.so
 auth       required                    pam_faillock.so      preauth
 -auth      [success=3 default=ignore]  pam_systemd_home.so
 auth       [success=2 default=ignore]  pam_unix.so          try_first_pass nullok
-auth       [success=1 default=bad]     pam_fprintd.so
+# auth       [success=1 default=bad]     pam_fprintd.so
+auth       [success=1 default=bad]     pam_u2f.so nouserok origin=pam://Inspiron5409 appid=pam://Inspiron5409 authfile=/home/yuan/.config/Yubico/u2f_keys
 auth       [default=die]               pam_faillock.so      authfail
 auth       optional                    pam_permit.so
 auth       required                    pam_env.so

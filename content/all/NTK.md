@@ -16,7 +16,7 @@ tags:
 
 - [[rff|Random Fourier Features]](RFF)可以看作NNGP的activation为cos，变动w的distribution一个特例。
 
-- 有限宽神经网络训练早期的 empirical NTK 会发生快速、任务相关的谱结构调整：标签/目标函数的能量更集中到 top eigenspaces 上[^4]；由于这些 eigenspaces 对应较大的特征值，训练会沿这些方向更快下降 [^5] [^6]。
+- 有限宽神经网络训练早期的 empirical NTK 会发生快速、任务相关的谱结构调整：标签/目标函数的能量更集中到 top eigenspaces 上[^4]；由于这些 eigenspaces 对应较大的特征值，训练会沿这些方向更快下降 [^6]。
 
 - 无限宽单隐层神经网络的梯度更新相当于MF中的Wasserstein 梯度流，也就是能量泛函在Wasserstein距离W_2下的最速降线。
 
@@ -44,6 +44,6 @@ This paper[^2] follows a similar approach on analyzing the norm during training.
 [^2]: [The lazy (NTK) and rich (μP) regimes: A gentle tutorial](https://arxiv.org/abs/2404.19719)
 [^3]: [A Spectral Condition for Feature Learning](https://arxiv.org/abs/2310.17813)
 [^4]: [Neural Spectrum Alignment: Empirical Study](https://arxiv.org/abs/1910.08720)
-[^5]: 233
+[^5]: ???
 [^6]: [A Theory of Neural Tangent Kernel Alignment and Its Influence on Training](https://arxiv.org/abs/2105.14301)
 [^7]: [On the Global Convergence of Gradient Descent for Over-parameterized Models using Optimal Transport](https://arxiv.org/abs/1805.09545)
