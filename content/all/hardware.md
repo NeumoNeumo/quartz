@@ -1,17 +1,19 @@
 ---
 id: hardware
+title: hardware
 aliases: []
 tags: []
 ---
 ## CPU
 
 Vdroop: The vcore difference when CPU transits from **idle** (low current) to
-**load** (high current). Load Line Calibration alleviate this.
+**load** (high current). Load Line Calibration alleviate this. This is
+intentional to avoid voltage overshoot on load release.
 
-Vdrop: The vcore difference between the expected (which can be set in BIOS) and
-the real (which can be checked in CPU-Z) due to internal persistence of power of
-supply or regulator, as well as voltage drop across intervening wiring or
-components.
+Vdrop(informal overclocking term): The vcore difference between the expected
+(which can be set in BIOS) and the real (which can be checked in CPU-Z) due to
+internal persistence of power of supply or regulator, as well as voltage drop
+across intervening wiring or components.
 
 VID: default vcore CPU requests its motherboard for. It has a table to ask for
 different voltage when in different load. The lower VID is, the more potential
