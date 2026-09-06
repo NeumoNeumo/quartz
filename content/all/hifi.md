@@ -66,10 +66,11 @@ Useful measurements
 
 ## Hardware
 
-电气隔离（galvanic isolation）的定义是输入侧和输出侧之间没有直流导电路径，没有直接的欧姆连接，也就是$R_{\rm DC}(\text{输入 GND},\text{输出 GND}) \rightarrow \infty$。一个判断依据是看输入与输出有没有共地，比如纯buck、boost是共地的，那就不隔离；但如果是flyback，能量通过中间的变压器传输，那就隔离。
+The definition of galvanic isolation is that there is no DC conductive path between the input side and the output side—that is, there is no direct ohmic connection between them. In other words, $R_{\rm DC}(\text{input GND},\text{output GND}) \to \infty$. One practical criterion is to check whether the input and output share a common ground. For example, ordinary buck and boost converters have a common ground, so they are not galvanically isolated. A flyback converter, by contrast, transfers energy through an intermediate transformer and therefore provides galvanic isolation.
 
-所谓的“电感中的电流具有惯性”的直觉，实际上说的是电感方程$v=L\frac{d i}{d t}$中，电流的突变会造成无限大的电压的情况。而更本质地，电感方程是法拉第电磁感应定律$v=\frac{d\lambda}{dt}=N\frac{d\Phi}{dt}$对理想独立电感的特殊情况($\lambda=Li$)，所以应该说“电感具有惯性”。在理想耦合电感的变压器中，原边突然断路时，电流确实可以突变到0，但同时副边的电流也会突变，以保持磁通量的连续性。对于一般的耦合绕组，更一般的关系是 $\lambda_p=L_p i_p+M i_s, \lambda_s=M i_p+L_s i_s$。
+The common intuition that “current through an inductor has inertia” is essentially a consequence of the inductor equation $v=L\frac{di}{dt}$: an instantaneous change in current would require an infinite voltage. More fundamentally, the inductor equation is a special case of Faraday’s law of electromagnetic induction, $v=\frac{d\lambda}{dt}=N\frac{d\Phi}{dt}$, applied to an ideal independent inductor, for which $\lambda=Li$. In that sense, it may be more appropriate to say that the inductor itself exhibits this “inertial” behavior. In an ideal transformer modeled as perfectly coupled inductors, if the primary winding is suddenly open-circuited, the primary current can indeed drop abruptly to zero, while the secondary current changes abruptly at the same time so as to maintain continuity of the magnetic flux. For a general pair of coupled windings, the more general relations are $\lambda_p=L_p i_p+M i_s$ and $\lambda_s=M i_p+L_s i_s$.
 
-共地HiFi系统可能出现的问题是出现地环路，地环路对信号地的噪声的来源包括如下几种
-1. 电磁感应：地环路变成了天线，接受环境中的50/60Hz磁场
-2. PE上流过的电流(理想情况下不应该有电流，但实际上会有Y电容和微小阻性漏电流)会造成压降。不同的地之间的电压可能有微小差别。
+One problem that can arise in a Hi-Fi system with a shared ground is the formation of a ground loop. Sources of noise introduced into the signal ground by a ground loop include the following:
+
+1. Electromagnetic induction: the ground loop effectively acts as a loop antenna and picks up ambient 50/60 Hz magnetic fields.
+2. Current flowing through protective earth (PE): ideally, no current should flow through PE, but in practice there may be currents due to Y capacitors and small resistive leakage paths. These currents produce voltage drops, so the ground potentials at different points may differ slightly.
