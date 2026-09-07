@@ -70,6 +70,29 @@ The definition of galvanic isolation is that there is no DC conductive path betw
 
 The common intuition that “current through an inductor has inertia” is essentially a consequence of the inductor equation $v=L\frac{di}{dt}$: an instantaneous change in current would require an infinite voltage. More fundamentally, the inductor equation is a special case of Faraday’s law of electromagnetic induction, $v=\frac{d\lambda}{dt}=N\frac{d\Phi}{dt}$, applied to an ideal independent inductor, for which $\lambda=Li$. In that sense, it may be more appropriate to say that the inductor itself exhibits this “inertial” behavior. In an ideal transformer modeled as perfectly coupled inductors, if the primary winding is suddenly open-circuited, the primary current can indeed drop abruptly to zero, while the secondary current changes abruptly at the same time so as to maintain continuity of the magnetic flux. For a general pair of coupled windings, the more general relations are $\lambda_p=L_p i_p+M i_s$ and $\lambda_s=M i_p+L_s i_s$.
 
+In an ideal transformer, the magnetic permeability $\mu$ of the core is infinite. Since $B=\mu H$, for a finite $B$, we must have $H=0$. By Ampere's law $H\ell = N_p i_p - N_s i_s$, we have $N_p i_p=N_s i_s$.
+
+> [!note] Analogy between electric and magnetic circuits
+> | Electric circuit | Magnetic circuit |
+> | --- | --- |
+> | Voltage $V$ | MMF $\mathcal F=NI$ |
+> | Current $I$ | Magnetic flux $\Phi$ |
+> | Resistance $R$ | Reluctance $\mathcal R$ |
+> | $I=V/R$ | $\Phi=\mathcal F/\mathcal R$ |
+> 
+> For a core, $\mathcal R=\frac{\ell}{\mu A}$.
+
+When the secondary of a transformer is open-circuited, the voltage applied to the primary determines the rate of change of magnetic flux through Faraday’s law. The magnetic flux density corresponds to a certain magnetic field strength, so a magnetic field must be established. According to Ampère’s circuital law, current is required to produce this field. This current is the magnetizing current.
+
+In fact, an ordinary inductor can be viewed as having air as its “core,” in which case its operating current is essentially the magnetizing current, although we do not usually describe it that way.
+
+When a load is connected to the secondary of a transformer, the induced secondary voltage drives a current through the load. This secondary current produces a magnetomotive force that tends to oppose the magnetic field in the core. However, the core flux is constrained by the voltage applied to the primary. As a result, the primary current can be regarded as consisting of two components: one component, the magnetizing current, establishes the original magnetic field, while the other, the load current referred to the primary, counteracts the magnetomotive force produced by the secondary current.
+
+The purpose of the magnetic core is to use a high-permeability material to reduce the ratio of magnetizing current to load current.
+
+#TODO
+实际变压器的 T 形等效电路
+
 One problem that can arise in a Hi-Fi system with a shared ground is the formation of a ground loop. Sources of noise introduced into the signal ground by a ground loop include the following:
 
 1. Electromagnetic induction: the ground loop effectively acts as a loop antenna and picks up ambient 50/60 Hz magnetic fields.
