@@ -1,5 +1,6 @@
 ---
 id: interesting_problems
+title: interesting_problems
 aliases: []
 tags:
   - problem
@@ -50,6 +51,10 @@ $$X = \bigcup_{i=1}^\infty (X \cap \partial D_i)$$
 下面的讨论均在整系数多项式中。任意$f(x)$是否必定存在$g(x)$使得$f(g(x))$不为既约多项式
 > [!info]- Answer
 $f(x) | f(f(x)+x)$
+
+---
+
+平面上分布着10个不同的点，你需要用若干个单位圆来覆盖它，并且圆与圆之间不能重叠。 求证：不论这10个点如何分布，你总能找到一种方法使得这些圆可以覆盖全部这10个点
 
 ## Famous Puzzles
 
