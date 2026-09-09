@@ -15,7 +15,7 @@ tags:
 
 ## Facts
 
-模型的最终 Loss 几乎只与总参数量、计算量（但不能太小，因为有一段欠拟合的常数loss区）和数据量（假设数据质量保持不变）有关，而对具体的深度/宽度比例呈现出极大的鲁棒性（在一定范围内）。[^1]
+同transformer族模型的最终 Loss 几乎只与总参数量、计算量（但不能太小，因为有一段欠拟合的常数loss区）和数据量（假设数据质量保持不变）有关，而对具体的深度/宽度比例呈现出极大的鲁棒性（在一定范围内）。[^1]
 
 给定计算量下，参数量和数据量应该以 1:1 的比例同步增加以获得最好的性能。[^2]
 
@@ -88,6 +88,10 @@ Implicit Bias of Dropout: https://arxiv.org/pdf/1806.09777
 
 小模型会优先把有限神经元/表示维度分配给高频、低复杂度任务；罕见任务的梯度信号稀疏，常被其它更新覆盖。大模型容量更大，常见任务被学到后其梯度变弱，因而较不干扰罕见任务。[^26]
 
+Johnson-Lindenstrauss引理说明神经网络随机初始化下的前向是近似保距的，当然，Saxe早就通过实验证明了多层串联会导致坍缩维度叠加，到后面就不等距了。如果考虑relu，那么充分宽神经网络会以高概率满足
+$$ \left| \|\rho(Mx)-\rho(My)\|^2 - \left[ \frac12\|x-y\|^2 - \|x\|\|y\|\psi(x,y) \right] \right| \le\delta $$
+其中$\psi(x,y) = \frac1\pi \left( \sin\theta-\theta\cos\theta \right), \theta=\angle(x,y)$，离得远的反而聚得更多[^35]。这其实很自然，因为如果两个向量是相反的，那么其中必有一者被完全压缩。
+
 ## Concepts
 
 #todo
@@ -133,3 +137,4 @@ https://chatgpt.com/c/69eb72ca-afbc-83e8-9c99-0cc82a6459c8
 [^32]: [Reinforcement learning towards broadly and persistently beneficial models](https://alignment.openai.com/beneficial-rl)
 [^33]: [When does RandOpt work?](https://kindxiaoming.github.io/blog/2026/randopt/)
 [^34]: [Emergence of simple-cell receptive field properties by learning a sparse code for natural images](https://www.nature.com/articles/381607a0)
+[^35]: [Comments on "Deep Neural Networks with Random Gaussian Weights: A Universal Classification Strategy?"](https://arxiv.org/abs/1901.02182)
