@@ -64,6 +64,17 @@ Useful measurements
 6. EQ会引入失真吗？EQ有不同的算法实现，如果使用IIR，则会引入相位失真(即，不同频率的波的群延时不同)，但人耳对此并不敏感（虽然人耳对左右耳音频的相位差异是比较敏感的，但你会左右耳用不一样的滤波器吗？），只有在短时波包中人耳才有感知到区别，例如鼓点，参见[此文](https://www.researchgate.net/publication/247027642_On_the_Audibility_of_Midrange_Phase_Distortion_in_Audio_Systems)；而采用线性相位滤波器则不会引入相位失真。
 7. 为什么要追求这样的target？我听着好听不就行了？事实上这是两条路，一条是追求自己觉得好听；另一条路是寻求高保真，尊重原著，希望自己听到与音频制作者一样的内容。对于前者，实际上你就是在购买厂家的调音，那么你不设置eq即可，没有什么损失。对于后者，如果混音师使用的是正规的工作室，那么他的配置应该是直达声是平直响应的监听音箱与一个接近哈曼参考值的听音房间。那么耳机的目标就是在给定与调音师使用的一样的音频信号时重建调音师在听音房间中的耳蜗处的声场。这是有相对明确的标准的，而我们的target就是在追求这个标准，具体可见[此文](https://peqdb.com/wiki/PEQdB-White-Paper.pdf)。当然，如果混音师师考虑到自己的听众的听音设备低频缺失高频无力或自己的监听就不行，就会主动调味，那反而会导致在target下味道过重，在一些流行音乐中确实存在这样的现象。
 
+
+- 但也不能唯数据论，尽管常见的参数，例如频响曲线与失真，表征了系统的许多性质，并且理论上来说，在最小相位系统中，频响曲线蕴含了系统的一切信息，包括群延时与混响。
+- 然而存在以下因素影响
+  - 声源与耳廓耦合会导致最小相位的假设不成立。考虑一个波从空间的两点出发(对应耳机振膜上的两点)或经过空间的两条路径，得到两个时域响应$a_1 x(t-\tau_1)$与$a_2 x(t-\tau_2)$，其中$a,\tau>0$，则连续系统的频域响应为$H(s) = e^{-s\tau_1} (a_1+a_2e^{-s(\tau_2 - \tau_1)})$，当$(\tau_2-\tau_1)(a_2-a_1)>0$时，$s$存在右半复平面的根，因此不是最小相位系统。
+  - 即使是最小相位系统，我们一般看频响曲线也只看个大概，而那些容易被忽略的波动，尤其是在高频，会影响相位响应。设最小相位系统频响曲线为$|H(w)|$给出，则其相位由$-\mathcal H\{\log |H(w)|\}$给出，其中$\mathcal H\{x(t)\} = \frac{1}{\pi} \operatorname{p.v.} \int_{-\infty}^{\infty} \frac{x(\tau)}{t-\tau}\,d\tau$为Hilbert变换，可见相位受到邻域波动很大影响。
+    - 这里更本质反映的是指标的可读性的问题。不同的指标是为不同的目的设计的，因此它们在解决它们所针对的问题上是有效的，但是在反映其它问题上，可能表现不佳。即使一个指标理论上具有系统的所有信息，但如果人类想仅凭肉眼与想象用它去推测另一个指标的数值，可能依然是不够准确的。
+  - 即使频响曲线是光滑的、完美的并且确实是最小相位系统，测量的结果与你佩戴的结果是不一样的，尤其是高频+动圈的组合
+    - 动圈的分割振动会带来更复杂的多源相位差异，并且这种差异会导致系统对耳机佩戴方式敏感。
+    - 在短程，高频更容易发生干涉。平面耳机与静电耳机虽然没有分割振动，但同样存在这种问题。不过由于平面相位相对一致，对耳机佩戴方式更不敏感，更容易通过前级补偿解决。
+- 并且这些因素对听感造成的影响是无法被谐波失真、非谐波失真以及粗略的频响曲线捕捉到。
+
 ## Hardware
 
 The definition of galvanic isolation is that there is no DC conductive path between the input side and the output side—that is, there is no direct ohmic connection between them. In other words, $R_{\rm DC}(\text{input GND},\text{output GND}) \to \infty$. One practical criterion is to check whether the input and output share a common ground. For example, ordinary buck and boost converters have a common ground, so they are not galvanically isolated. A flyback converter, by contrast, transfers energy through an intermediate transformer and therefore provides galvanic isolation.
@@ -97,3 +108,4 @@ One problem that can arise in a Hi-Fi system with a shared ground is the formati
 
 1. Electromagnetic induction: the ground loop effectively acts as a loop antenna and picks up ambient 50/60 Hz magnetic fields.
 2. Current flowing through protective earth (PE): ideally, no current should flow through PE, but in practice there may be currents due to Y capacitors and small resistive leakage paths. These currents produce voltage drops, so the ground potentials at different points may differ slightly.
+
