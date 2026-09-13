@@ -92,6 +92,8 @@ Johnson-Lindenstrauss引理说明神经网络随机初始化下的前向是近�
 $$ \left| \|\rho(Mx)-\rho(My)\|^2 - \left[ \frac12\|x-y\|^2 - \|x\|\|y\|\psi(x,y) \right] \right| \le\delta $$
 其中$\psi(x,y) = \frac1\pi \left( \sin\theta-\theta\cos\theta \right), \theta=\angle(x,y)$，离得远的反而聚得更多[^35]。这其实很自然，因为如果两个向量是相反的，那么其中必有一者被完全压缩。
 
+在两层网络中，在muP initialization中，
+
 ## Concepts
 
 #todo
