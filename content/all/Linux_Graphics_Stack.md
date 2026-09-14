@@ -1,10 +1,11 @@
 ---
+id: Linux_Graphics_Stack
+title: Linux_Graphics_Stack
+aliases: []
 tags:
   - GPU
   - hardware
   - stack
-aliases: []
-id: Linux_Graphics_Stack
 ---
 
 ## Hierarchy
@@ -29,6 +30,9 @@ id: Linux_Graphics_Stack
 - WebGL -> OpenGL ES 2.0
 - WebGL2 -> OpenGL ES 3.0
 - WebGPU -> Vulkan, Metal, DirectX 12
+
+**virtio-gpu** provides a virtual GPU device for guest OS. And since a normal OpenGL/Vulkan driver is hardware-specific, we need virgl for opengl and venus for vulkan to be installed on the host. virtio-gpu chooses a host rendering backend from existing grphics APIs(opengl/vulkan) on the host to avoid being tied to a specific GPU. In practice, take vulkan for example, you need to both specify `-device virtio-gpu-vulkan` on the host and install a venus-capable vulkan stack inside the guest.
+^136250
 
 [^1]: [trying to understand drm dri mesa radeon gallium](https://www.reddit.com/r/archlinux/comments/6la6n5/trying_to_understand_drm_dri_mesa_radeon_gallium/)
 [^2]: [why wayland is using opengl es instead of opengl](https://unix.stackexchange.com/questions/511134/why-wayland-is-using-opengl-es-instead-of-opengl)

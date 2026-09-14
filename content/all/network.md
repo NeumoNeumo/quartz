@@ -81,5 +81,7 @@ VirtIO是一种为虚拟机设计的半虚拟化I/O设备标准，它规定了gu
 
 VirtIO device可以通过不同的方式呈现给host，这叫VirtIO transport，于是有virtio-pci（x86常见）, virtio-mmio（arm常见）, virtio-ccw等。
 
+显卡中也有VirtIO，见[[Linux_Graphics_Stack#^136250]]
+
 ## Reference
 https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks
