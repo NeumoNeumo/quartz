@@ -27,3 +27,9 @@ $$
 $$
 
 Interestingly, this means even in the layers except the last one, the weight is almost unchanged over the course of the training. But note that this does not mean features are unchanged as well. So we cannot say this implies a slow-fast separation of the training dynamics.
+
+$$
+\frac{\|\Delta W_{\text{out}}\|_{\mathrm{op}}}{\|W_\text{out}\|_{\mathrm{op}}} =\Theta(1), \qquad
+\frac{\|\Delta W_k\|_{\mathrm{op}}}{\|W_k\|_{\mathrm{op}}} =\Theta(1), \qquad
+, \qquad
+$$
