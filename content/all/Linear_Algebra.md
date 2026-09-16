@@ -1,8 +1,9 @@
 ---
+id: Linear_Algebra
+title: Linear_Algebra
+aliases: []
 tags:
   - math
-aliases: []
-id: Linear_Algebra
 ---
 
 ## Basics
@@ -26,12 +27,16 @@ id: Linear_Algebra
 - If $AB=kBA$ where $k\neq 0$, then $A$ and $B$ are simultaneously triangularizable. If we additionally have both $A$ and $B$ are diagonalizable and $k=1$, then they are simultaneously diagonalizable.
 - $A$ and $B$ are simultaneously congruent diagonalization iif there exists a PD symmetric matrix $H$ such that $AHB=BHA$.
 - In algebraically closed fields, any invariant subspace can be decomposed into a direct sum of generalized eigenspaces of the operator restricted to that subspace.
-- On eigenvalues: 
+- On eigenvalues/singular values: 
     - Rigidity: 
         - Courant-Fischer min-max principle: Eigenvalues are stationary values of the energy function on a unit sphere. No matter linear constraints (Cauchy's interlace theorem) or small perturbation(Weyl's inequality), the energy function will not be changed dramatically, thus keeping the eigenvalues stable.
         - Cauchy's interlace theorem: rigidity of the spectrum under spatial constraint. Imagine you constrain a string of beads at a specific point, which is mathematically equivalent to taking a principal submatrix
-        - Weyl's inequality: rigidity of the spectrum under perturbation
+        - Weyl's inequality: rigidity of the spectrum under perturbation $|\sigma_k(A+E) - \sigma_k(A)| \le \|E\|_2$
+        - rank inequality for empirical spectral distributions: low-rank perturbation $\sup_x|F_A(x)-F_B(x)| \leq \frac{\operatorname{rank}(A-B)} {\min(m,n)}$
+        - Hoffman-Wielandt inequality: $\min_\pi \sum_i|\lambda_i(A)-\lambda_{\pi(i)}(B)|^2 \leq \|A-B\|_F^2.$ It bounds the total eigenvalue movement of **normal** matrices in Frobenius norm.
+        - Mirsky's inequality: $\sum_i |\sigma_i(A)-\sigma_i(B)|^p \leq \|A-B\|_{S_p}^p$
+        - Davis-Kahan $\sin \theta$ theorem: Bounds the angle between eigenspaces of **Hermitian** matrices. $\|\sin\Theta(U,\widetilde U)\| \lesssim \frac{\|E\|_{\mathrm{op}}}{\delta}$ where $\delta$ is the spectral gap. For more infomation, check [this post|https://trungvietvu.github.io/notes/2020/DavisKahan]
+        - Bauer-Fike theorem: Non-normal matrices can have extremely unstable eigenvalues. For diagonalizable matrices $A=V\Lambda V^{-1},$ $|\lambda(A+E)-\lambda(A)| \leq \kappa(V)\|E\|$ where $\kappa(V)=\|V\|\|V^{-1}\|.$ An example is adding a Jordan block with a rank-one perturbation $E=\epsilon e_d e_1^\top$.
 - $\min_{W_k \dots W_1 = W} \frac{1}{k} \sum_{i=1}^k \|W_i\|_F^2 = \|W\|_{S_{2/k}}^{2/k}$. This is used in proving the low rank of DNN under weight decay [[neural_networks#^851862|here]].
 
 Some useful tricks are in [[dynamical_system]].
-

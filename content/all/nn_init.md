@@ -26,10 +26,13 @@ $$
 =\Theta(d_{in}^{-1/2})
 $$
 
-Interestingly, this means even in the layers except the last one, the weight is almost unchanged over the course of the training. But note that this does not mean features are unchanged as well. So we cannot say this implies a slow-fast separation of the training dynamics.
+Interestingly, this means even in the layers except the last one, the weight is almost unchanged over the course of the training. But note that this does not mean features are unchanged as well. So we cannot say this implies a slow-fast separation of the training dynamics. In fact, this can be shown from the operator norm more explicitly.
 
 $$
-\frac{\|\Delta W_{\text{out}}\|_{\mathrm{op}}}{\|W_\text{out}\|_{\mathrm{op}}} =\Theta(1), \qquad
-\frac{\|\Delta W_k\|_{\mathrm{op}}}{\|W_k\|_{\mathrm{op}}} =\Theta(1), \qquad
-, \qquad
+\frac{\|\Delta W_{\mathrm{out}}\|_{\mathrm{op}}}{\|W_{\mathrm{out}}\|_{\mathrm{op}}} =\Theta(1),\qquad
+\frac{\|\Delta W_k\|_{\mathrm{op}}}{\|W_k\|_{\mathrm{op}}} =\Theta(1),\qquad
+\frac{\|\Delta W_{\mathrm{in}}\|_{\mathrm{op}}}{\|W_{\mathrm{in}}\|_{\mathrm{op}}} =
+\Theta\!\left(
+\frac{\sqrt{d/d_{\rm in}}}{1+\sqrt{d/d_{\rm in}}}
+\right)
 $$
