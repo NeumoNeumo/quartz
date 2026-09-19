@@ -1,9 +1,10 @@
 ---
+id: Complex_System
+title: Complex_System
+aliases: []
 tags:
   - complex
   - nonlinear-dynamics
-aliases: []
-id: Complex_System
 ---
 
 "*Bifurcations and Phase Transitions in the Origins of Life*" introduced some complex system researches in biology. 
@@ -27,3 +28,4 @@ $$
 	- RNA replicator has a higher error rate than DNA. That's why complex life forms choose DNA as genetic material. Only RNA virus carries genetic information on RNA.
 	- Increasing the error rate of replication is a way to kill bacteria.
 - As the type of molecules and related reactions increases, there is a critical point at which large connected networks of reactions are inevitable, resulting in a autocatalytic cycle. This theory is based on [Erdos-Renyi model](https://en.wikipedia.org/wiki/Erdős–Rényi_model).
+
