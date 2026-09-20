@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KeyboardEvent Inspector</title>
+  <style>
+    :root {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color-scheme: light dark;
+    }
+    body {
+      margin: 0;
+      padding: 24px;
+      max-width: 1100px;
+    }
+    h1 { margin-top: 0; }
+    .hint {
+      font-family: system-ui, sans-serif;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid currentColor;
+      padding: 6px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { width: 260px; }
+    .true { font-weight: 700; }
+    #log {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      border: 1px solid currentColor;
+      padding: 12px;
+      min-height: 260px;
+      max-height: 55vh;
+      overflow-y: auto;
+    }
+    button {
+      padding: 6px 12px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>KeyboardEvent Inspector</h1>
+
+  <table>
+    <tbody id="current"></tbody>
+  </table>
+
+  <button id="clear">Clear log</button>
+  <div id="log"></div>
+
+  <script>
+    const current = document.getElementById("current");
+    const log = document.getElementById("log");
+
+    const modifierNames = [
+      "Control",
+      "Shift",
+      "Alt",
+      "Meta",
+      "CapsLock",
+      "NumLock",
+      "ScrollLock",
+      "AltGraph"
+    ];
+
+    function locationName(location) {
+      switch (location) {
+        case KeyboardEvent.DOM_KEY_LOCATION_STANDARD: return "STANDARD (0)";
+        case KeyboardEvent.DOM_KEY_LOCATION_LEFT:     return "LEFT (1)";
+        case KeyboardEvent.DOM_KEY_LOCATION_RIGHT:    return "RIGHT (2)";
+        case KeyboardEvent.DOM_KEY_LOCATION_NUMPAD:   return "NUMPAD (3)";
+        default: return String(location);
+      }
+    }
+
+    function row(name, value) {
+      const tr = document.createElement("tr");
+      const th = document.createElement("th");
+      const td = document.createElement("td");
+
+      th.textContent = name;
+      td.textContent = String(value);
+
+      if (value === true) td.className = "true";
+
+      tr.append(th, td);
+      return tr;
+    }
+
+    function snapshot(e) {
+      const mods = {};
+      for (const name of modifierNames) {
+        mods[name] = e.getModifierState(name);
+      }
+
+      return {
+        type: e.type,
+        key: e.key,
+        code: e.code,
+        location: locationName(e.location),
+        repeat: e.repeat,
+        ctrlKey: e.ctrlKey,
+        shiftKey: e.shiftKey,
+        altKey: e.altKey,
+        metaKey: e.metaKey,
+        modifiers: mods,
+        timeStamp: e.timeStamp.toFixed(3)
+      };
+    }
+
+    function render(e) {
+      const s = snapshot(e);
+
+      current.replaceChildren(
+        row("event.type", s.type),
+        row("event.key", JSON.stringify(s.key)),
+        row("event.code", JSON.stringify(s.code)),
+        row("event.location", s.location),
+        row("event.repeat", s.repeat),
+        row("event.ctrlKey", s.ctrlKey),
+        row('getModifierState("Control")', s.modifiers.Control),
+        row('getModifierState("CapsLock")', s.modifiers.CapsLock),
+        row("event.shiftKey", s.shiftKey),
+        row("event.altKey", s.altKey),
+        row("event.metaKey", s.metaKey),
+        row('getModifierState("Shift")', s.modifiers.Shift),
+        row('getModifierState("Alt")', s.modifiers.Alt),
+        row('getModifierState("Meta")', s.modifiers.Meta),
+        row('getModifierState("NumLock")', s.modifiers.NumLock),
+        row('getModifierState("ScrollLock")', s.modifiers.ScrollLock),
+        row('getModifierState("AltGraph")', s.modifiers.AltGraph)
+      );
+
+      const line =
+        `${s.type.padEnd(7)} ` +
+        `key=${JSON.stringify(s.key).padEnd(14)} ` +
+        `code=${JSON.stringify(s.code).padEnd(14)} ` +
+        `loc=${s.location.padEnd(12)} ` +
+        `ctrlKey=${String(s.ctrlKey).padEnd(5)} ` +
+        `Control=${String(s.modifiers.Control).padEnd(5)} ` +
+        `CapsLock=${String(s.modifiers.CapsLock).padEnd(5)} ` +
+        `repeat=${s.repeat}`;
+
+      log.textContent += line + "\n";
+      log.scrollTop = log.scrollHeight;
+    }
+
+    window.addEventListener("keydown", render, true);
+    window.addEventListener("keyup", render, true);
+
+    document.getElementById("clear").addEventListener("click", () => {
+      log.textContent = "";
+    });
+  </script>
+</body>
+</html>

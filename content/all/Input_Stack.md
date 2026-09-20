@@ -1,27 +1,40 @@
 ---
+id: Input_Stack
+title: Input_Stack
+aliases: []
 tags:
   - linux
   - keyboard
   - stack
-aliases: []
-id: Input_Stack
 ---
 
 ## Hierarchy
 
 - **Kernal Driver** interprets specific hardware protocols of the devices (like USB HID or I2C) and translates its signals (hardware scancode) into a standardized format (linux input keycode).
 - **Kernel evdev subsystem** exposes each physical device as a `/dev/input/event*` character file.
-- **libinput** is a userspace library that translates evdev events into more meaningful and high-level events like
-	- pointer acceleration
-	- touchpad gesture(like pinch-to-zoom and swipes)
-- **Wayland Compositor** recieve the events from `libinput`. For keyboard input, the event from libinput is forwarded to `XKB` and then the XKB keysym is sent to the focused client window.
+- [*keyboard*](https://cdn.kernel.org/doc/html/latest/input/input.html#keyboard) is an in-kernel input handler and is a part of VT code. It is on the same level as `evdev`
+- **libinput** is a userspace library that translates evdev events into more meaningful and high-level events like pointer acceleration and touchpad gesture(like pinch-to-zoom and swipes). It does not change the keycode.
+- **Wayland Compositor** uses `libinput` to deal with the received evdev and get `wl_keyboard.key`, which is a a platform-specific key code that can be interpreted by feeding it to the keyboard mapping like `xkb_v1`.
+- **Wayland Client** interpret the `wl_keyboard.key` in the appropriate keymapping to get the XKB keysym(e.g. Control_L), XKB modifier(e.g. Control).
 - **XKB** is a standard that defined mapping from keycode to keysym. It also modifies the events optionally (like Caps Lock to Ctrl in your Sway). `libxkbcommon` is an implementation of XKB.
-
-> [!note]
-> The keycodes in Linux console, Xorg and Wayland can be different. There is no universal standard.
 
 > [!note] Where is `ctrl+alt+f2` handled?
 > By Kernel VT Subsystem on tty and by the wayland compositor on GUI mode. When sway starts, it informs the kernel not to deal with `ctrl+alt+f2` using `ioctl(fd, KDSETMODE, KD_GRAPHIC)`. That's why when your sway hangs, you cannt `ctrl+alt+f2` to change your tty directly. But you can use `alt+SysRq` then `r` to reclaim the ownership of the keyboard from the compositor and then use `ctrl+alt+f2` because SysRq is captured before evdev. But your need to enable SysRq on your system first.
+
+**showkey --scancodes** and **showkey --keycodes** need to run in a virtual console instead of a graphical environment
+
+Monitor codes:
+- hardware-specific: HID usage, AT scancode. `showkey --scancodes`, `evtest`
+- Linux-specific
+    - keyboard: `showkey --keycodes`
+    - evdev keycode: `evtest`
+    - libinput: `libinput debug-events --show-keycodes`
+    - wl_keyboard.key: `WAYLAND_DEBUG=1 wev`
+- XKB-specific: XKB keycode = evdev + 8. `wev`
+- layout-spacific: keysym. `wev`
+
+> [!note] ctrl:nocaps vs caps:ctrl_modifier
+> In XKB, The former maps caps to keysym = Control_L and modifier = Control while the latter maps caps to keysym = Caps_Lock and modifier = Control. A wayland client still getwl_keyboard.key. That's why even when using ctrl:nocaps, `KeyboardEvent.code` in a browser still recognizes the caps. You can check it out [here](00-Attachments/multifractal.html)
 
 ## AT & HID
 
@@ -32,33 +45,6 @@ The driver `drivers/input/keyboard/atkbd.c` maps the scancodes of an AT keyboard
 `udev` and `hwdb` cooperate as a supplementary component to customize some special scancode-keycode mappings for different keyboards.
 
 You can also use `setkeycodes scancode keycode` to modify the mapping
-
-## Tools
-
-**evtest** monitors evdev events.
-**showkey --scancodes** and **showkey --keycodes** need to run in a virtual console instead of a graphical environment
-**libinput debug-events --show-keycodes** monitors libinput event
-**wev** monitors the event a Wayland window received.
-
-*Examples*:
-
-`evtest` result:
-
-```bash
-Event: time 1754922741.745357, type 4 (EV_MSC), code 4 (MSC_SCAN), value 1e
-Event: time 1754922741.745357, type 1 (EV_KEY), code 30 (KEY_A), value 1
-```
-
-`1e` is a scancode, and 30 is a linux kernel keycode.
-
-`wev` result:
-
-```bash
-[        16:     wl_keyboard] key: serial: 1087693; time: 259297802; key: 38; state: 1 (pressed)
-                      sym: a            (97), utf8: 'a'
-```
-
-38 is a XKB keycode, and `a` is a keysym(also `0x61`).
 
 ## Reference
 https://medium.com/@damko/a-simple-humble-but-comprehensive-guide-to-xkb-for-linux-6f1ad5e13450
