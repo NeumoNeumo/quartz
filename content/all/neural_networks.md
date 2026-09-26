@@ -92,6 +92,8 @@ Johnson-Lindenstrauss引理说明神经网络随机初始化下的前向是近�
 $$ \left| \|\rho(Mx)-\rho(My)\|^2 - \left[ \frac12\|x-y\|^2 - \|x\|\|y\|\psi(x,y) \right] \right| \le\delta $$
 其中$\psi(x,y) = \frac1\pi \left( \sin\theta-\theta\cos\theta \right), \theta=\angle(x,y)$，离得远的反而聚得更多[^35]。这其实很自然，因为如果两个向量是相反的，那么其中必有一者被完全压缩。
 
+在群运算中，平方activation function可以大大化简的计算，在深层更新速率远快于浅层的情况下，计算过程中傅立叶变换自然而然浮现 [^36]。在有层级关系的数据中，线性模型会倾向于先学习宏观差异(例如动物与植物的区别)再精细化（例如猫和狗的区别）。[^37]
+
 ## Concepts
 
 #todo
@@ -138,3 +140,5 @@ https://chatgpt.com/c/69eb72ca-afbc-83e8-9c99-0cc82a6459c8
 [^33]: [When does RandOpt work?](https://kindxiaoming.github.io/blog/2026/randopt/)
 [^34]: [Emergence of simple-cell receptive field properties by learning a sparse code for natural images](https://www.nature.com/articles/381607a0)
 [^35]: [Comments on "Deep Neural Networks with Random Gaussian Weights: A Universal Classification Strategy?"](https://arxiv.org/abs/1901.02182)
+[^36]: [Provable Scaling Laws of Feature Emergence from Learning Dynamics of Grokking](https://arxiv.org/abs/2509.21519)
+[^37]: [A mathematical theory of semantic development in deep neural networks](https://arxiv.org/abs/1810.10531)

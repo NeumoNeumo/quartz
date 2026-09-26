@@ -12,6 +12,9 @@ Chaos measures unpredictability, while complexity measures the structured organi
 
 - Lyapunov exponent $\lambda \approx 1$. The structure is maintained. The future is partly predicable. But it also has some changes.
 
+> [!note]
+> A dynamical system that preserves phase-space volume can still exhibit chaos, e.g. Arnold's cat map.
+
 ## Measure the complexity
 
 - Bennett’s logical depth measures how much computational history is needed to produce an object from a nearly minimal description.

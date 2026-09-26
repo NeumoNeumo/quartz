@@ -55,6 +55,17 @@ $f(x) | f(f(x)+x)$
 ---
 
 平面上分布着10个不同的点，你需要用若干个单位圆来覆盖它，并且圆与圆之间不能重叠。 求证：不论这10个点如何分布，你总能找到一种方法使得这些圆可以覆盖全部这10个点
+> [!info]- Answer
+> Random method
+
+---
+
+Let $A$ be an $n \times n$ real matrix. Prove: in the dynamical system $\dot{x}=Ax$, the trajectory of any initial real vector $x$ is not dense in the $n$\-dimensional real space.
+
+^097194
+
+> [!info]- Answer
+> Project $x$ onto a left eigenvector of $A$.
 
 ## Famous Puzzles
 
