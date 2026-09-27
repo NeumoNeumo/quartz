@@ -1,4 +1,7 @@
 ---
+id: UTF
+title: UTF
+aliases: []
 tags:
   - coding
   - encoding
@@ -27,7 +30,8 @@ units or 1 code unit to store in UTF-8, UTF-16 and UTF-32 respectively.
 ^code-units
 
 From a historical view, Joseph D. Becker initially assumed 16 bits per character
-would suffice as shown in the [first Unicode draft proposal](http://unicode.org/history/unicode88.pdf). So 16-bit fixed-width UCS-2 is proposed. However, with CJK characters added, the code point had to expand to 32 bits, leading to UTF-16, the variable-width encoding that arose from UCS-2 which is obsoleted today. We could also use a single 32-bit code unit to represent the 32-bit code point. That is UTF-32 a.k.a UCS-4.
+would suffice as shown in the [first Unicode draft proposal](http://unicode.org/history/unicode88.pdf). So 16-bit fixed-width UCS-2 is proposed. However, with CJK characters added, the code point had to expand to 32 bits, leading to UTF-16, the variable-width encoding that arose from obsoleted UCS-2. We could also use a single 32-bit code unit to represent the 32-bit code point. That is UTF-32 a.k.a UCS-4.
+
 
 # Common sense
 
@@ -89,13 +93,8 @@ represent one perceived character as [[#^counting|mentioned before]].
 Summarized from [this answer](https://www.zhihu.com/question/23024782/answer/36719691).
 
 1. Two successive rare characters that cannot display correctly in some software.
-2. The software replace it to two �� (`U+FFFD`), which is 
-``` text
-0xEF 0xBF 0xBD   0xEF 0xBF 0xBD
-```
-in UTF-8.
-3. The text is directly copy and paste elsewhere and decoded as GBK.
-Then we have
+2. The software replace it to two �� (`U+FFFD`), which is `0xEF 0xBF 0xBD   0xEF 0xBF 0xBD` in UTF-8.
+3. The text is directly copy and paste elsewhere and decoded as GBK. Then we have
 ``` text
 锟（0xEFBF）
 斤（0xBDEF）

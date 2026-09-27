@@ -38,13 +38,17 @@ Monitor codes:
 
 ## AT & HID
 
-- An AT keyboard has scancode. But HID keyboard only has `HID usage = (usage_page<<16) + usage_id`, which is defined in the standard, [HID Usage Tables](https://usb.org/document-library/hid-usage-tables-16). However, in sake of a uniform notation, we also call HID usage as the "scancode" of an HID keyboard.
+- An AT keyboard has scancode. But HID keyboard only has `HID usage = (usage_page<<16) + usage_id`, which is defined in [HID Usage Tables](https://usb.org/document-library/hid-usage-tables-16). However, in sake of a uniform notation, we also call HID usage as the "scancode" of an HID keyboard.
 
 The driver `drivers/input/keyboard/atkbd.c` maps the scancodes of an AT keyboard to keycodes. The generic HID input subsystem maps the usages of an HID keyboard to keycodes.
 
-`udev` and `hwdb` cooperate as a supplementary component to customize some special scancode-keycode mappings for different keyboards.
+## Remapping
 
-You can also use `setkeycodes scancode keycode` to modify the mapping
+`setkeycodes scancode keycode` can be used to add/overrides entries for extended scancodes that are not already mapped. So you cannot use it to remap caps to ctrl.
+
+`udev` and `hwdb` cooperate as a supplementary component to customize some special scancode-keycode mappings for different keyboards. They may request kernel EVIOCSKEYCODE remapping to evdev device to adjust keycodes.
+
+`keyd` creates a virtual input device that redirects and processes keystrokes from another input device. It avoids duplicate key events by using `EVIOCGRAB` to acquire exclusive access to the monitored input device.
 
 ## Reference
 https://medium.com/@damko/a-simple-humble-but-comprehensive-guide-to-xkb-for-linux-6f1ad5e13450

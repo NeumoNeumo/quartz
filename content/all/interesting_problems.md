@@ -65,7 +65,7 @@ Let $A$ be an $n \times n$ real matrix. Prove: in the dynamical system $\dot{x}=
 ^097194
 
 > [!info]- Answer
-> Project $x$ onto a left eigenvector of $A$.
+> First solution: Project $x$ onto a left eigenvector of $A$. Second solution: Jordan decomposition. Actually, the first solution can be viewed from the perspective of the [[linearization|Koopman operator theory]].
 
 ## Famous Puzzles
 
