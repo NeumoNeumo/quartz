@@ -1,8 +1,8 @@
 ---
 id: neural_networks
-title: Neural Network
+title: "Neural Network"
 aliases:
-  - Neural Network
+  - "Neural Network"
 tags:
   - AI
 ---
@@ -92,16 +92,9 @@ Johnson-Lindenstrauss引理说明神经网络随机初始化下的前向是近�
 $$ \left| \|\rho(Mx)-\rho(My)\|^2 - \left[ \frac12\|x-y\|^2 - \|x\|\|y\|\psi(x,y) \right] \right| \le\delta $$
 其中$\psi(x,y) = \frac1\pi \left( \sin\theta-\theta\cos\theta \right), \theta=\angle(x,y)$，离得远的反而聚得更多[^35]。这其实很自然，因为如果两个向量是相反的，那么其中必有一者被完全压缩。
 
-在群运算中，平方activation function可以大大化简的计算，在深层更新速率远快于浅层的情况下，计算过程中傅立叶变换自然而然浮现 [^36]。在有层级关系的数据中，线性模型会倾向于先学习宏观差异(例如动物与植物的区别)再精细化（例如猫和狗的区别）。[^37]
+在群运算中，平方activation function可以大大化简的计算，1. 自下而上地，在深层更新速率远快于浅层的情况下，计算过程中傅立叶变换自然而然浮现 [^36]，2. 自上而下地，maximal margin的解也正好对应傅立叶变换对应的泛化解[^38]。
 
-## Concepts
-
-#todo
-fisher information, Hessian, NTK, GGN关联与辨析，参考https://gemini.google.com/app/e6e9443b5f0f0005
-
-实际上fisher就是梯度协方差
-
-https://chatgpt.com/c/69eb72ca-afbc-83e8-9c99-0cc82a6459c8
+在有层级关系的数据中，线性模型会倾向于先学习宏观差异(例如动物与植物的区别)再精细化（例如猫和狗的区别）。[^37]
 
 ## Ref
 
@@ -142,3 +135,4 @@ https://chatgpt.com/c/69eb72ca-afbc-83e8-9c99-0cc82a6459c8
 [^35]: [Comments on "Deep Neural Networks with Random Gaussian Weights: A Universal Classification Strategy?"](https://arxiv.org/abs/1901.02182)
 [^36]: [Provable Scaling Laws of Feature Emergence from Learning Dynamics of Grokking](https://arxiv.org/abs/2509.21519)
 [^37]: [A mathematical theory of semantic development in deep neural networks](https://arxiv.org/abs/1810.10531)
+[^38]: [Feature emergence via margin maximization: case studies in algebraic tasks](https://arxiv.org/abs/2311.07568)
