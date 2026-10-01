@@ -92,6 +92,10 @@ curl -6 https://ip.p3terx.com
 curl --http3-only https://1.1.1.1 -v -o /dev/null
 # Cloudflare IP test
 sudo -u mihomo -- curl --fail --noproxy '*' --resolve "speed.cloudflare.com:443:2606:4700:57::d9af:6a9c" --silent --show-error --max-time 10 -o /dev/null -w 'total=%{time_total}s │ start=%{time_starttransfer}s speed=%{speed_download}B/s\n' 'https://speed.cloudflare.com/__down?bytes=20000000'
+# IP quality
+curl -L https://cleanip.io/cli
+# VPS Test
+bash <(curl -Ls https://sh.cd)
 cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 233 | head -n 1
 cat /dev/urandom | tr -dc [:print:] | head -c 20
 sudo mount -o port=12049 -t nfs 172.18.34.25:/mnt/storage /mnt/storage/
