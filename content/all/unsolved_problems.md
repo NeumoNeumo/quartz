@@ -192,7 +192,7 @@ In a fundamentally linear world, the dynamics of the world is described using a 
 
 - Dynamics: Nonlinear: Coarse-graining brings nonlinearity.
     - Chaos(property): Chaos is ubiquitous in a nonlinear system.
-    - Emergence(property): The dominant dynamics on a coarser level is emergence
+    - Emergence(property): The dominant dynamics on a coarser level is emergence (Complex dynamics are governed by the spectrum of a linear operator.)
 - Law/Logic: Some emergence exhibits a strong regularity. For example, Newton’s three laws of motion
 - Life/Evolution: Some law enables self-reproduction at some scale. For example, RNA-centered evolutionary phase
 - Intelligence: ability of a system to achieve goals efficiently across a broad range of environments
