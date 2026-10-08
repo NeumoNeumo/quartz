@@ -1,4 +1,7 @@
 ---
+id: Capybara
+title: Capybara
+aliases: []
 tags:
   - biology
   - animal
@@ -6,7 +9,7 @@ tags:
 
 英文名就是Capybara，卡皮巴拉。动物界脊索动物门哺乳纲啮齿目水豚科水豚属水豚。
 
-豚=猪，是最大的啮齿目动物，重35至66千克（比我都重）。
+豚=猪，是最大的啮齿目动物，重35至66千克。
 
 ![](../00-Attachments/20250711201431.png)
 
