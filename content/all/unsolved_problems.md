@@ -20,6 +20,19 @@ Yi Ma:
  - Interpolation: identify which samples belong to the same strucure.
  - Extrapolation: determine to which structure a new sample belongs.
  - Representation: find the most compact and discriminative representations.
+
+All intelligent systems are in the form of networks, including biological neural networks, artificial neural networks, cellular automata, neural cellular automata(https://distill.pub/2020/growing-ca/), Langton's ant(if we see the existence of an ant as a state of the square), e.t.c.
+
+What does a intelligent system require?
+- model: network. Why network? Because a network is an efficient way to produce intelligence.
+    - Efficient to produce: Every unit is simple. So it is easy to reproduce hundreds of thousands of this unit. 
+    - Efficient to represent: An intelligent system should have enough state to represent the outer world. Compared to inscreasing the state of a single unit, increasign the number of units has exponentially more states.
+    - Their interaction can have very complicated bahavior. Why complex behavior?
+- optimization
+    - robustness: changing the parameters a bit won't change the model's behavior a lot.
+    - The model has enough expressiveness:
+
+Can a intelligent result be reproduced in multiple network? The reproducibility should be the core of your work on intelligent system. sigma(Ax) and its composition as a general rule.
  
 就像统计力学中用系综描述一个系统，神经网络是否也存在类似的函数？统计物理中的元素足够多，测量足够稳定，所以才能建立理论。但是理论AI中，AI中的元素个数多少与测量的方便程度是相反的。是否有一个模型多元且更容易测量？或许是贝叶斯网络？能否将模型的输入用一个准群描述，而这个准群存在某种分离使得其更容易计算？
 
@@ -30,8 +43,6 @@ Zero-cost proxy? like https://iclr-blog-track.github.io/2022/03/25/zero-cost-pro
 为什么log-log近似线性？(似乎可以从singular learning theory and Stacastic learning theory的角度解释）
 
 如何计算能够实现所要求的智能的最小计算量？
-
-不应该拿step横坐标，而应该用累计变化长度。https://gemini.google.com/app/516bb44a8a7e672c
 
 盆地与高原的比例反映了模型与数据的匹配程度，这样我们就排除了scheduler的影响，似乎SLT也有类似的想法
 
