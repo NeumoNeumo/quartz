@@ -1,5 +1,6 @@
 ---
 id: Estimation
+title: Estimation
 aliases: []
 tags:
   - math
@@ -46,7 +47,7 @@ Converge.
 - [ ] irrationality of a sequence.
 
 Remark: The proof involves [[dyadic_decomposition]] which is a kind of piecewise estimation. FYI, [this video](https://www.bilibili.com/video/BV1gnpLzeETg). Cauchy Condensation test is a form of [dyadic decomposition](https://www.tricki.org/article/Dyadic_decomposition).  
-Remark: Aside from dyadic decomposition, you might also need equal-spacing partition. Dyadic decomposition has a finer granularity in a small scale and coarser granularity in a larger scale compared to the equal-spacing partition. It is suitable for $\sum_{i=1}^\infty i^t f(i)$ because it relates with $\sum f(i)$. On the other hand, equal-spacing partition is useful for $\sum_{i=1}^\infty \exp(-i) f(i)$. In the example above, you need to use equal-spacing partition for values of $\exp(-nx_n)$. In this problem, both equal-spacing and dyadic work.
+Remark: Aside from [[dyadic decomposition]], you might also need equal-spacing partition. Dyadic decomposition has a finer granularity in a small scale and coarser granularity in a larger scale compared to the equal-spacing partition. It is suitable for $\sum_{i=1}^\infty i^t f(i)$ because it relates with $\sum f(i)$. On the other hand, equal-spacing partition is useful for $\sum_{i=1}^\infty \exp(-i) f(i)$. In the example above, you need to use equal-spacing partition for values of $\exp(-nx_n)$. In this problem, both equal-spacing and dyadic work.
 
 ## Piecewise Estimation
 

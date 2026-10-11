@@ -10,16 +10,7 @@ tags:
 
 ## Core Problems
 
-### Skip training
-
-Given a dataset, a model and its trainer, how to estimates the resulting performance without training?
-
-从简单的开始研究，可以先去研究不同的模型、数据与训练方式分别有什么可量化的bias。当我们在说某个模型的时候，其实我们说的是具体的、包含了参数的模型，而不仅仅包括模型的结构，当然这里的模型也可以表示某个参数分布下的模型。
-
-Yi Ma:
- - Interpolation: identify which samples belong to the same strucure.
- - Extrapolation: determine to which structure a new sample belongs.
- - Representation: find the most compact and discriminative representations.
+### How to construct an intelligent system
 
 All intelligent systems are in the form of networks, including biological neural networks, artificial neural networks, cellular automata, neural cellular automata(https://distill.pub/2020/growing-ca/), Langton's ant(if we see the existence of an ant as a state of the square), e.t.c.
 
@@ -33,20 +24,33 @@ What does a intelligent system require?
     - The model has enough expressiveness:
 
 Can a intelligent result be reproduced in multiple network? The reproducibility should be the core of your work on intelligent system. sigma(Ax) and its composition as a general rule.
- 
+
+### Skip training
+
+Given a dataset, a model and its trainer, how to estimates the resulting performance without training?
+
+从简单的开始研究，可以先去研究不同的模型、数据与训练方式分别有什么可量化的bias。当我们在说某个模型的时候，其实我们说的是具体的、包含了参数的模型，而不仅仅包括模型的结构，当然这里的模型也可以表示某个参数分布下的模型。
+
+Yi Ma:
+ - Interpolation: identify which samples belong to the same strucure.
+ - Extrapolation: determine to which structure a new sample belongs.
+ - Representation: find the most compact and discriminative representations.
+
 就像统计力学中用系综描述一个系统，神经网络是否也存在类似的函数？统计物理中的元素足够多，测量足够稳定，所以才能建立理论。但是理论AI中，AI中的元素个数多少与测量的方便程度是相反的。是否有一个模型多元且更容易测量？或许是贝叶斯网络？能否将模型的输入用一个准群描述，而这个准群存在某种分离使得其更容易计算？
+
+在CNN中如何设计每层的大小与深度？这能被计算出而不是依托于经验吗？
 
 In Langevin dynamics, does the evolution of parameters form a fractal?
 
 Zero-cost proxy? like https://iclr-blog-track.github.io/2022/03/25/zero-cost-proxies/
 
-为什么log-log近似线性？(似乎可以从singular learning theory and Stacastic learning theory的角度解释）
+Why is the relationship usually linear on a log–log plot? (It seems that this might be explained from the perspectives of singular learning theory and stochastic learning theory.)
 
-如何计算能够实现所要求的智能的最小计算量？
+How can we determine the minimum amount of computation required to achieve a desired level of intelligence?
 
-盆地与高原的比例反映了模型与数据的匹配程度，这样我们就排除了scheduler的影响，似乎SLT也有类似的想法
+The ratio of basins to plateaus reflects how well the model matches the data, allowing us to factor out the influence of the learning rate scheduler.
 
-是否可能用某个数学对象建模一层数据？就像用狄利克雷级数描述一个数论函数一样。
+Is it possible to represent a layer of data using some mathematical object, much like how a Dirichlet series represents a number-theoretic function?
 
 或许可以构建一个benchmark给skip training的任务？但在此过程中你可能需要去预测the norm of the parameter change, loss curve, performance等的特征。以怎样的形式去实现这样的预测呢？不能仅仅考虑loss curve的方差与均值，还要加入grokking。
 
