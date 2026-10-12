@@ -7,10 +7,10 @@ tags:
   - classical_mechanics
 ---
 
-#TODO
+#FUN
 pruning
 
-More information https://chatgpt.com/g/g-p-6a28f2b7ec2881919aee4ffe05b53d19-fun/c/6ab92047-2038-83e8-a966-3c0e87a087a7
+More information https://chatgpt.com/g/g-p-6a28f2b7ec2881919aee4ffe05b53d19-fun/c/6ab92047-2038-83e8-a966-3c0e87a087a7 and https://chatgpt.com/c/6a13c77a-38f4-83a7-9d0f-28c28a296a44
 
 The following discussion uses a single particle with Hamiltonian $H=p^2/(2m)+V(q)$ as an example.
 

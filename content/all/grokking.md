@@ -1,5 +1,6 @@
 ---
 id: grokking
+title: grokking
 aliases: []
 tags:
   - AI
@@ -13,7 +14,7 @@ https://chatgpt.com/c/6a182ce3-19cc-83ab-b0af-da7c9b0976e8
 
 ## Facts
 
-#todo
+#STRATEGIC
 Do not read this paper itself, but its background.
 https://gemini.google.com/app/01315c38dbbf9949
 

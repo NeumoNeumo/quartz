@@ -7,7 +7,7 @@ tags:
   - philosophy
 ---
 
-#TODO
+#FUN
 - https://en.wikipedia.org/wiki/Interpretations_of_quantum_mechanics#Many_worlds
 - https://www.zhihu.com/question/654722201/answer/3537021007
 - https://www.zhihu.com/question/65065348/answer/227163873

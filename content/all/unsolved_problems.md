@@ -200,7 +200,7 @@ About Potemkin: From the perspective of memorization and generalization, recitin
 
 **问题**：原子为什么那么小？宇宙为什么这么大？地球为什么这么大？基因为什么那么小？最大的个体智能能有多大？智能的定义是什么？生命游戏会在什么数量级涌现智能？这套方法可以用来对神经网络/雪崩进行分析吗？
 
-#TODO
+#STRATEGIC
 Can you create a math model on your theory of multi-scale dynamcis? Constitute an organic whole! Be the God of a linear world and see if there will be life living in there.
 
 In a fundamentally linear world, the dynamics of the world is described using a linear dynamical system. We will show that this model is enough to explain a lot of things in a complex system.

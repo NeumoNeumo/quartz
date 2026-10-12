@@ -21,7 +21,7 @@ tags:
 
 在FFN中，考虑训练中不同层的hidden states的输出频率变化。一开始差别不大，深层的高频分量比低层稍微多一点；随训练进行，深层低频分量显著变多，浅层低频分量显著减少，直到深层的低频分量多于浅层的[^3]。考虑我们输入一个圆形轨迹，最后会输出什么，显然输出函数复杂度随深度指数级增大，浅层参数的波动会对结果造成很大影响[^29]。一些对抗攻击的文章也显示模型对浅层扰动更敏感[^30]。
 
-#todo
+#STRATEGIC
 https://chatgpt.com/c/69ee36aa-dcb0-83e8-ab36-250cbf5722f3 文章声称$\lambda_{\max}$ 能很好地衡量训练损失曲面在最陡方向上的“尖锐程度”，但不能可靠地衡量模型泛化能力。又是一篇universal weight subspace吗？它用测试集上的训练表示所谓的泛化能力，这合理吗？可以让AI来批判一下。
 
 - 预训练后的模型停在多任务平均loss较低的位置，但这不一定对于单个任务是最好的。随模型规模增大在此点周围随机扰动给下游任务带来更好的表现的概率也越大，当然我们可以想象如果模型足够大，它的优化足够好，那么随机扰动带来的提升也是有限的。[^27] 随机扰动有时可以隧穿GD难以跨越的loss山峰,[^33]
@@ -32,7 +32,7 @@ https://chatgpt.com/c/69ee36aa-dcb0-83e8-ab36-250cbf5722f3 文章声称$\lambda_
 
 - Subliminal Learning经验上观察到如果让一个带有特定隐性偏好（例如“喜欢猫头鹰”或“带有潜在恶意”）的 Teacher 模型生成完全无关的格式化数据（如纯数字序列或代码片段），并在严格过滤掉任何相关语义词汇后用于蒸馏同参数的 Student 模型，Student 依然会继承这种隐性偏好 [^16]。它反映的是模型行为模拟对参数的影响，具体来说，就是相似参数的两个模型，其中一个模拟另一个的输出行为，则它们的参数会更加靠近，也因此它们在其它任务上的表现也会趋近。其实人也有类似的机制，当我们在临摹某些书法大家的作品时是可以感受其为人的——所谓字如其人——于是在学习其字帖的时候也会受其性格的感染。类似的还有用人造的符号语言做pre-pretraining[^31]，以及emergent misalignment/alignment[^32]。
 
-#todo
+#STRATEGIC
 - [ ] 更多内容：https://gemini.google.com/app/8f7207707a2d6352 https://gemini.google.com/app/0728971d7fc90683 https://gemini.google.com/app/7e9c51e9193c477d https://gemini.google.com/app/65651655acc73178 https://gemini.google.com/app/5981a2dc703e075d https://chatgpt.com/c/69eb78be-e8d0-83e8-a5a7-075830e920e6 https://chatgpt.com/c/69eb6d30-ff6c-83e8-87c9-d3ccb5eb89f6 https://chatgpt.com/c/69eb4f32-d024-83e8-9d15-8cdd3fcd9984 https://chatgpt.com/c/69edb3d6-adb0-83e8-8160-4bf4fcba3e18 https://chatgpt.com/c/69eb6d30-ff6c-83e8-87c9-d3ccb5eb89f6 https://chatgpt.com/c/69f0665b-7f28-83e8-83bc-0764ec1f7ef7 https://gemini.google.com/app/a1cab97df8bdf24e https://gemini.google.com/app/55aa420eb9b48f95 https://chatgpt.com/c/69f2bb60-36e4-83e8-834b-f6f67f87fb37 https://chatgpt.com/c/69eb48f0-50f0-83e8-b03b-e8a99cbab0e5
 - [ ] weight decay对low rank应该有促进作用，有没有理论框架对其进行分析？例如tensor program框架下如何看待low rank与weight decay？在没有wd的时候，模型会表现出low rank吗？
 经过海量预训练后，权重 $W_0$ 会停留在损失地形的一个**高维平坦流形（而非严格极小值点）**附近。此时的 Hessian 矩阵呈现明显的低秩结构：由于数据的核心特征，存在极少数极大的特征值（极度敏感方向）；同时由于模型的过参数化、架构对称性以及 Softmax 的饱和效应，存在海量接近于零甚至为零的特征值（极度平坦方向）；此外，还夹杂着少量负特征值（意味着其实是鞍点区域）。这可以解释[The Universal Weight Subspace Hypothesis](https://arxiv.org/abs/2512.05117)为什么不同的任务学到的LoRA的主成分很大程度上是重叠的。从NTK的角度说(如果lora调整不是很大)，模型的动力学是由NTK中的最大的那几个特征值主导的，因此低秩不足为奇(推导可见[此](https://gemini.google.com/share/a2ed81daecbc))。
@@ -47,19 +47,19 @@ weight decay可以诱导低秩的原因：
 - weight decay对矩阵而言相当于Feobenius norm，也就是对矩阵奇异值大小的regularization。
 - 注意到$\min_{W_k \dots W_1 = W} \frac{1}{k} \sum_{i=1}^k \|W_i\|_F^2 = \|W\|_{S_{2/k}}^{2/k}$，因此多层线性网络在weight decay下的优化相当于对整个系统的low rank的优化，网络越深这种现象会因为$S_{2/k}$范数而越明显。^851862 [^23]
 
-#todo
+#STRATEGIC
 在大奇异值方向上微调[^21]类似于对full fine-tuning的一个近似，相比于传统LoRA，它直接对其了奇异值方向因而有更快的收敛速度。然而，正如在memory研究中经常发现的“调整主路会导致遗忘”，直接进行这样的微调可能会损失预训练时的性能(“马嘉祺效应”[^24]便是后训练时“嘉祺”token被淹没而导致的)，所以也有选择在小奇异值方向上进行微调的[^20]，效果甚至更好。这也启示我们，有时候不加约束地end-to-end未必是最优的。CorDA[^22]则是他们的task-aligned version，调的不是权重矩阵的奇异值方向而是输入的相关性矩阵与权重矩阵的乘积。但这个式子的合理性存疑，这一点在后续工作中有更多讨论 https://chatgpt.com/c/69ff3aca-7a00-83a2-98c6-708105490fdc
 ^105453
 
 这篇文章[^19]指出muP下Hessian的训练中的sharpness(最大Hessian特征值)的曲线几乎重合，而NTK则不是，所以muP scaling起来练起来比较模型的loss曲线比较一致。
 
-#todo
+#STRATEGIC
 数据的训练数据的顺序(例如curriculum learning)能像改架构与超参数一样对模型的训练产生显著影响吗？是不是可以从神经马太效应的角度解释？
 
-#todo
+#STRATEGIC
 Implicit Bias of Dropout: https://arxiv.org/pdf/1806.09777
 
-#todo
+#STRATEGIC
 - [ ] 理论上如何处理的
 此文[^17]从理论与实验上均证明了更小的batch size, 更高的lr，以及weight decay都可以增强SGD中让参数矩阵low rank的bias
 
@@ -78,12 +78,12 @@ Implicit Bias of Dropout: https://arxiv.org/pdf/1806.09777
   
 - 数据与模型匹配中的不稳定区域是存在的，即当数据的复杂度和多样性都处于中间水平时，模型可能会在训练中反复横跳于死记硬背与泛化之间，并因不同的随机种子最终两极分化地收敛为死记硬背或泛化 [^9]。这可能显示了内部回路的赢者通吃，就像相变一样。
 
-#todo
+#STRATEGIC
 - 多层网络中浅层一般收敛更快。尽管可能浅层的梯度辐值更小，但它们的landscape更平坦，使得梯度更可预测。此外，浅层偏向于拟合低频特征，深层则高频。[^10]在训练过程中，随着网络深度的增加，更深层所面临的“有效目标函数”会越来越向低频方向偏移 [^11]。关于为什么在良好的初始化的情况下深层的网络的收敛速度比浅层网络更慢的更多信息 https://gemini.google.com/app/b39ff2e6cf48732f
 
 - 这篇文章[^15]指出随着神经网络训练，其内部交互网络的多重分形谱逐渐变宽，这体现了模型内部连接模式异质性的提升；多重分形谱整体向左移动（即不规则性指标降低）说明其稀疏性在不断增强 ([这里](00-Attachments/multifractal.html)有一个不错的可视化)。但我对它对神经元距离的定义不太满意。另外，这种表现一般是危机或相变的标志，例如2008金融危机爆发前夕及期间的标普500、DDoS中的流量、震前能量涨落等。
 
-#todo
+#STRATEGIC
 我认为另一个研究前景的可能是最优batch size与其它参量的关系以及分形动力学（有可能是multifractal） https://gemini.google.com/app/1244d3a05282f6ec https://gemini.google.com/app/13cef90729e5f64f https://gemini.google.com/app/5294c2f6902abf79 https://gemini.google.com/app/53cb521148354551
 
 小模型会优先把有限神经元/表示维度分配给高频、低复杂度任务；罕见任务的梯度信号稀疏，常被其它更新覆盖。大模型容量更大，常见任务被学到后其梯度变弱，因而较不干扰罕见任务。[^26]

@@ -1,6 +1,6 @@
 ---
 id: mackey
-title: Mackey's theorem
+title: "Mackey's theorem"
 aliases: []
 tags:
   - group_representation
@@ -25,4 +25,4 @@ $$
 
 and $K\backslash G/H$ denotes a set of representatives for the double cosets of $K$ and $H$ in $G$.
 
-#TODO
+#FUN

@@ -1,9 +1,9 @@
 ---
+id: the_vital_question
+title: the_vital_question
+aliases: []
 tags:
   - book
-  - todo
-aliases: []
-id: the_vital_question
 ---
 
 结构和基因不完全是一回事，基因是结构的一部分，基因可以部分决定生物的结构，但是诸如内共生的结构并不是由基因决定的，结构甚至也可以对基因形成选择压力，例如线粒体基因转移到核基因中。有时结构也可能成为演化的主导限制因素，例如内共生之于复杂生命。
@@ -48,6 +48,7 @@ id: the_vital_question
 
 ## 多缸发动机
 
+#FUN
 
 
 ## 细胞核起源

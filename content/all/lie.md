@@ -7,7 +7,7 @@ tags:
 ---
 
 ## Definition
-For a Lie group $G$, its Lie algebra is first defined simply as the tangent space at the identity and to define the Lie bracket on $T_e G$, consider the left-invariant vector field $\widetilde X(g)=(dL_g)_eX$ then define $[X,Y]_{\mathfrak g} = [\widetilde X,\widetilde Y](e)$.
+For a Lie group $G$, its Lie algebra is defined as the tangent space at the identity equipped with a Lie bracket. To define the Lie bracket on $T_e G$, consider the left-invariant vector field $\widetilde X(g)=(dL_g)_eX$ then define $[X,Y]_{\mathfrak g} = [\widetilde X,\widetilde Y](e)$.
 
 For a matrix Lie group, $\widetilde X(g) = (dL_g)_eX=gX$. With this convention, the Lie bracket becomes the usual matrix commutator $[X,Y]=XY-YX$. If we use the right-invariant vector field, the Lie bracket should be $[X^R,Y^R]=-[X,Y]^R$ where $X^R(g)=Xg$. Proof:
 $$
@@ -25,6 +25,18 @@ $$
 $$
 
 Therefore, $[X,Y]_{\mathfrak g} = [\widetilde X,\widetilde Y](e)=XY-YX$
+
+For a general Lie group, we have $[X,Y] = \left(X^i\partial_iY^j-Y^i\partial_iX^j\right)\partial_j$. Equivalently, in local coordinates, we can also write $[X,Y](x)=DY(x)X(x)-DX(x)Y(x)$ where $D$ represents a Jacobian matrix. Applying this formula to the left-invariant vector fields on a matrix Lie group gives an alternative derivation
+$$
+\begin{aligned}
+[\widetilde X,\widetilde Y](g)
+&=D\widetilde Y_g[\widetilde X(g)]
+-D\widetilde X_g[\widetilde Y(g)]\\
+&=D\widetilde Y_g[gX]-D\widetilde X_g[gY]\\
+&=(gX)Y-(gY)X\\
+&=g(XY-YX)
+\end{aligned}
+$$
 
 Why do we need Jacobi identity in Lie algebra? https://www.zhihu.com/question/32067616/answer/2010150735887766097
 

@@ -1,8 +1,9 @@
 ---
-tags:
-  - books
-aliases: []
 id: book_scanning
+title: book_scanning
+aliases: []
+tags:
+  - book
 ---
 
 1. Use `vflat` on your mobile to scan the book as it provides real-time visual feedback. Rescan any blurry pages.

@@ -11,8 +11,8 @@ tags:
 
 - feature leaning regime的模型在白化数据下会先剧烈变动其NTK，得到一个数据依赖的低秩核，在此期间loss几乎保持不变，然后再进行NTK拟合。[^1]
 
-#todo
-- DNN as a kernel learner https://gemini.google.com/app/edb4a69f259ffd14
+#STRATEGIC
+- [Neural Networks as Kernel Learners: The Silent Alignment Effect](https://arxiv.org/abs/2111.00034)
 
 - [[rff|Random Fourier Features]](RFF)可以看作NNGP的activation为cos，变动w的distribution一个特例。
 

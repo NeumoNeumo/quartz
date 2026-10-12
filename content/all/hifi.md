@@ -101,7 +101,7 @@ When a load is connected to the secondary of a transformer, the induced secondar
 
 The purpose of the magnetic core is to use a high-permeability material to reduce the ratio of magnetizing current to load current.
 
-#TODO
+#FUN
 实际变压器的 T 形等效电路
 
 One problem that can arise in a Hi-Fi system with a shared ground is the formation of a ground loop. Sources of noise introduced into the signal ground by a ground loop include the following:

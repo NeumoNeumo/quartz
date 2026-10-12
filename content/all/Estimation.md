@@ -41,7 +41,7 @@ Converge.
 > Prop: $a$ is a number with a finite irrationality measure. Then $\{f(n)a\}$ is poly-regular where $f(x)\in \mathbb Z[x]$ and $f \neq 0$.  
 > Note: Uniformly distributed sequence does not necessarily imply poly-regularity.
 
-#todo
+#FUN
 - [ ] Does this have anything to do with [low-discrepancy sequences](https://en.wikipedia.org/wiki/Low-discrepancy_sequence) and [Denjoy-Koksma inequality](https://en.wikipedia.org/wiki/Denjoy–Koksma_inequality)?
 - [ ] Does poly-regular near every possible number imply finite irragularity? check [this](https://poe.com/s/ZbHmGQnKiNHMNGUcEoLr)
 - [ ] irrationality of a sequence.

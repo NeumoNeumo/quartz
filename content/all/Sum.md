@@ -1,8 +1,9 @@
 ---
+id: Sum
+title: Sum
+aliases: []
 tags:
   - math
-aliases: []
-id: Sum
 ---
 
 - Algebraic transformation
@@ -26,5 +27,5 @@ id: Sum
 
 ref: https://zhuanlan.zhihu.com/p/663917766
 
-#todo
+#FUN
 https://web.evanchen.cc/handouts/Summation/Summation.pdf
