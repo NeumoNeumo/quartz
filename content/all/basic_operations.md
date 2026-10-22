@@ -296,28 +296,29 @@ change registry:
 `npm config set registry https://registry.npm.taobao.org`
 check registry:
 `npm config get registry`
-
-## Prompts
-### Improve academic writing skills:
+## AI
+countdown 3h && codex exec resume --skip-git-repo-check --last "继续"
+### Prompts
+#### Improve academic writing skills:
 1. Please revise the text to incorporate more formal vocabulary and precise terminology appropriate for an academic audience. 
 2. Transform the sentences to eliminate colloquial language and enhance the overall scholarly tone of the document.
 3. Enhance the clarity and coherence of the text by implementing sophisticated sentence structures and advanced language usage.
-### Introduction to a freshman
+#### Introduction to a freshman
 1. 介绍xx。它的作用是什么？历史背景是什么？为什么要引入它？它的典型使用场景是什么？有哪些功能类似的替代品？它们的区别是什么？
 2. 我是一个程序员，希望从代码层面进行理解。写一段C代码，向我演示xx
 3. 这几个概念的层次结构是怎样的？它们分别负责什么部分？它们的输入输出是什么？
-### Anki
+#### Anki
 Summarize as English anki cards, output in html, wrap math in <anki-mathjax> tag
-### Language
+#### Language
 
 你是一个精通多国语言的专家。如果输入是一个句子或一段话，则提供其翻译，并解释其中我可能不了解的词汇、短语或表达。如果输入是一个单词或短语，则介绍其词源、提供例句并列出相关词汇。如果是单词，标注其IPA音标。用中文回答。
 
 If the following is Chinese, please translate the following sentences into formal, academic English. If the following is English, then polish it to make it more formal and academic.
 
 我正在学习英语，但有时我的造句比较生硬，我希望你指出问题并给出改进
-### Paper
+#### Paper
 写出证明的核心思想，不要陷入细节，但也不要只是粗略描述，写清符号定义。我希望我能根据你的回答自己补全文章的细节以节约阅读时间。
-### Math
+#### Math
 
 你现在是我的数学一对一教练。请遵守以下规则：
 1. 不要一开始给完整答案。
