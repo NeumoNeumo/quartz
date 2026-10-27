@@ -7,7 +7,7 @@ tags:
 ---
 
 ## Definition
-For a Lie group $G$, its Lie algebra is defined as the tangent space at the identity equipped with a Lie bracket. To define the Lie bracket on $T_e G$, consider the left-invariant vector field $\widetilde X(g)=(dL_g)_eX$ then define $[X,Y]_{\mathfrak g} = [\widetilde X,\widetilde Y](e)$.
+For a Lie group $G$, its Lie algebra is defined as the tangent space at the identity equipped with a Lie bracket. We can define a Lie algebra on the smooth vector fields of a manifold, that is, the Lie derivative. We can also define the Lie bracket on $T_e G$. Consider the left-invariant vector field $\widetilde X(g)=(dL_g)_eX$ then define $[X,Y]_{\mathfrak g} = [\widetilde X,\widetilde Y](e)$.
 
 For a matrix Lie group, $\widetilde X(g) = (dL_g)_eX=gX$. With this convention, the Lie bracket becomes the usual matrix commutator $[X,Y]=XY-YX$. If we use the right-invariant vector field, the Lie bracket should be $[X^R,Y^R]=-[X,Y]^R$ where $X^R(g)=Xg$. Proof:
 $$

@@ -1,5 +1,6 @@
 ---
 id: inequality
+title: inequality
 aliases: []
 tags:
   - inequality
@@ -20,7 +21,7 @@ tags:
 - Probability
 - Piecewise decomposition
     - [[Estimation#^64287d|dyadic decomposition]]
-- Construct local inequalities. e.g. https://www.bilibili.com/video/BV127iuBbE21, [[inequality_with_sqrt]]
+- Construct local inequalities. e.g. https://www.bilibili.com/video/BV127iuBbE21, [[inequality_with_sqrt]], Margolus–Levitin theorem
 
 ## Problems
 
