@@ -67,6 +67,12 @@ Let $A$ be an $n \times n$ real matrix. Prove: in the dynamical system $\dot{x}=
 > [!info]- Answer
 > First solution: Project $x$ onto a left eigenvector of $A$. Second solution: Jordan decomposition. Actually, the first solution can be viewed from the perspective of the [[linearization|Koopman operator theory]].
 
+---
+
+Prove that a large cube cannot be dissected into finitely many cubes of pairwise different sizes
+> [!info]- Answer
+> Consider the minimal square in a facet.
+
 ## Famous Puzzles
 
 - https://en.wikipedia.org/wiki/Four_glasses_puzzle

@@ -43,11 +43,12 @@ Problem: I don't think Gibbs' approach explains the 2nd law of thermodynamics.
 
 Replace "number of states" with "phase-space volume." So we need a measure, for example $d\mu(\Gamma)=\frac{d^{3N}q\,d^{3N}p}{N!h^{3N}}$. 
 
-Why dividing $N!$? The set of configurations satisfying $z_1=z_2$ has zero measure in the full twelve-dimensional phase space. And we want to identify the physically distinquishable microstates. 
+Why dividing $N!$? The set of configurations satisfying $z_i=z_j$ has zero measure in the phase space. And we want to identify the physically distinguishable microstates. Why physically distinguishable? [Gibbs paradox]().
 
 
 
 ### Application
 
 We can use $\text{maximize}\quad S = k_b \sum_{j=1}^{\ell}n_j\ln n_j$ s.t. $\sum_j n_j = N$ and $\sum_j \varepsilon_j n_j = U$ to derive the Maxwell-Boltzmann equilibrium distribution $n_j = \frac{N}{Z} e^{-\varepsilon_j / kT}$.
+
 
