@@ -39,6 +39,10 @@ Let $W=\frac{N!}{\prod_{j=1}^{\ell}n_j!}$. If the ensemble is uniformly distribu
 #STRATEGIC
 Problem: I don't think Gibbs' approach explains the 2nd law of thermodynamics.
 
+### Clausius
+
+$S(B)-S(A)=\int_A^B\frac{\delta Q_{\mathrm{rev}}}{T}$.
+
 ### Continuous space
 
 Replace "number of states" with "phase-space volume." So we need a measure, for example $d\mu(\Gamma)=\frac{d^{3N}q\,d^{3N}p}{N!h^{3N}}$. 
