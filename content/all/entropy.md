@@ -69,6 +69,15 @@ Replace "number of states" with "phase-space volume." So we need a measure, for 
 
 Why dividing $N!$? The set of configurations satisfying $z_i=z_j$ has zero measure in the phase space. And we want to identify the physically distinguishable microstates. Why physically distinguishable? [Gibbs paradox](https://en.wikipedia.org/wiki/Gibbs_paradox).
 
+Why dividing $h^{3N}$? First we we want $d^{3N}q\,d^{3N}p$ to be dimensionless. But can we divide $\bar h^{3N}$? When calculating the entropy in a system with a fixed particle number. It is OK to do so because the factor will be cancelled out. But chemical potential is influenced by the factor. $\mu_\hbar=\mu_h-3k_BT\ln(2\pi).$ In the reaction $A\rightleftharpoons 2B$, The equilibrium condition is $\mu_A = 2\mu_B$. So $\mu_\hbar$ and $\mu_h$. To explain $h^{3N}$, let's consider what's the microstate number in the scale of quantum mechanics. 
+
+https://chatgpt.com/g/g-p-6a28f2b7ec2881919aee4ffe05b53d19-fun/c/6ae2bf0a-0854-83e8-b67e-c1b31076a8e6
+https://chatgpt.com/g/g-p-6a28f2b7ec2881919aee4ffe05b53d19-fun/c/6ae544ff-215c-83e8-b4be-92c804097933
+THE GIBBS PARADOX E. T. Jaynes Department of Physics. Washington University
+https://www.cpt.univ-mrs.fr/~verga/pdfs/Lebowitz-1993xw.pdf
+https://newquanta.com/wp-content/uploads/2026/03/e9878de695b4e58c96e7bea4e79086e8aeba.pdf
+
+
 
 
 ### Application
