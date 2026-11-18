@@ -1,5 +1,6 @@
 ---
 id: requiem
+title: 安魂曲
 aliases:
   - 安魂曲
 tags:
